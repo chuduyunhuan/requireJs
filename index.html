@@ -1,0 +1,310 @@
+<!doctype html>
+<html>
+<head>
+    <title>requireJsTest</title>
+    <meta charset="utf-8">
+    <style>
+        div{margin-bottom:5px;margin-left: 15px;margin-top: 3px}
+        .img-preview{
+            -moz-border-bottom-colors: none;
+            -moz-border-left-colors: none;
+            -moz-border-right-colors: none;
+            -moz-border-top-colors: none;
+            border-bottom-color: #B8B8B8;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-image-outset: 0 0 0 0;
+            border-image-repeat: stretch stretch;
+            border-image-slice: 100% 100% 100% 100%;
+            border-image-source: none;
+            border-image-width: 1 1 1 1;
+            border-left-color-ltr-source: physical;
+            border-left-color-rtl-source: physical;
+            border-left-color-value: #B8B8B8;
+            border-left-style-ltr-source: physical;
+            border-left-style-rtl-source: physical;
+            border-left-style-value: solid;
+            border-left-width-ltr-source: physical;
+            border-left-width-rtl-source: physical;
+            border-left-width-value: 1px;
+            border-right-color-ltr-source: physical;
+            border-right-color-rtl-source: physical;
+            border-right-color-value: #B8B8B8;
+            border-right-style-ltr-source: physical;
+            border-right-style-rtl-source: physical;
+            border-right-style-value: solid;
+            border-right-width-ltr-source: physical;
+            border-right-width-rtl-source: physical;
+            border-right-width-value: 1px;
+            border-top-color: #B8B8B8;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-top-style: solid;
+            border-top-width: 1px;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            float: left;
+        }
+        #map{
+            align:center;
+            overflow:hidden;
+            position:absolute;
+            margin-bottom:0px;margin-left: 0px;margin-top: 0px;
+            left:10px;
+            right:10px;
+            top: 3px;
+            bottom:2px;
+            z-index:-1
+        }
+        #indexSelect{
+            border:1px solid #BEBEBE    ;
+            background: #FFFFFF ;
+            position:absolute;
+            visibility: hidden;
+            overflow-y: auto;
+            right: 10px;
+            width:305px;
+            top: 10%;
+            bottom: 1%
+        }
+        #dayOrMonth{
+            border:1px solid #000000 ;
+            background: #FFFFFF;
+            position:relative;
+            overflow: hidden;
+            right: 10px;
+            width:270px;
+
+            height: 40px;
+            line-height: 40px;
+        }
+        #shudi{
+            border:1px solid #000000 ;
+            background: #FFFFFF;
+            position:relative;
+            overflow: hidden;
+            right: 10px;
+            width:270px;
+
+            height: 168px;
+        }
+        #sejie{
+            border:1px solid #000000 ;
+            background: #FFFFFF;
+            position:relative;
+            overflow: hidden;
+            right: 10px;
+            width:270px;
+
+            height: 60px;
+        }
+        #picture{
+            border:1px solid #000000 ;
+            background: #FFFFFF;
+            position:relative;
+            overflow: hidden;
+            right: 10px;
+            width:270px;
+
+            height: 230px;
+        }
+        #statisticsObject{
+            border:1px solid #000000 ;
+            background: #FFFFFF;
+            position:relative;
+            overflow: hidden;
+            right: 10px;
+            width:270px;
+
+            height: 35px;
+        }
+        #statisticsIndex{
+            border:1px solid #000000 ;
+            background: #FFFFFF;
+            position:relative;
+            overflow: hidden;
+            right: 10px;
+            width:270px;
+
+            height: 90px;
+        }
+        #topNumber{
+            border:1px solid #000000 ;
+            background: #FFFFFF;
+            position:relative;
+            overflow: hidden;
+            right: 10px;
+            width:270px;
+
+            height: 100px;
+        }
+        #searchOk{
+            border:none ;
+            background: #FFFFFF;
+            position:relative;
+            overflow: hidden;
+            right: 10px;
+            width:270px;
+
+            height: 40px;
+        }
+        #showIndex{
+            position:absolute;
+            right: 10px;
+            width:40px;
+            top: 280px;
+            bottom: 100px
+        }
+        #hideIndex{
+            position:absolute;
+            visibility: hidden;
+            overflow: hidden;
+            right: 310px;
+            width:40px;
+            top: 280px;
+            bottom: 100px
+        }
+        .button{
+            border: none;
+            cursor: pointer;
+            height: 30px;
+            margin-left:10px;
+            background: #FFFFFF ;
+            color: #000000 ;
+            border-color: transparent;
+            outline: none;
+        }
+    </style>
+    <!--link rel="stylesheet" href="css/leaflet.css" /-->
+    <!--link rel="stylesheet" href="css/bootstrap.css" /-->
+    <!--script src="scripts/leaflet.js"></script>
+    <script src='scripts/leaflet.ChineseTmsProviders.js'></script-->
+    <script src="scripts/jquery-1.9.1.min.js"></script>
+    <script src="require.js" data-main="scripts/main" ></script>
+
+</head>
+<body>
+<div id="showIndex">
+    <input type="image" src="images/right.png" alt="显示" right=10px width="40px" height="80px" align="center" />
+</div>
+<div id="hideIndex">
+    <input type="image" src="images/left.png" alt="隐藏" top="300px" right="340px" width="40px" height="80px" align="center" />
+</div>
+<div id="indexSelect" class="img-preview" >
+    <div class="img-preview" id="dayOrMonth" >
+        <table class="table">
+            <tr>
+                <td >
+                    <input type="button" id="dayClick" style="font-family:Microsoft YaHei;margin-top:0px;margin-left:0px;width:50px;font-style-color: #000000;color: #6495ED  ; font-size: 14px"  class="button "   value="日粒度"  />
+                </td>
+                <td >
+                    <input type="button" id="monthClick" style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-20px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="月粒度"  />
+                </td>
+                <td>
+                    <input type="text" id="datePicker" style="font-family:Microsoft YaHei;margin-top:-3px;margin-left:0px;font-style-color: #000000;width: 100px;" >
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="img-preview" id="shudi" >
+        <b > &nbsp 属地：</b>
+        <br/>
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:2px;width:50px;font-style-color: #000000;color: #6495ED  ; font-size: 14px"  class="button "   value="全市"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="浦东"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="南汇"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="黄埔"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="卢湾"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="徐汇"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:2px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="长宁"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="静安"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="普陀"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="虹口"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="杨浦"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="闸北"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:2px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="闵行"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="松江"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="宝山"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="嘉定"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="青浦"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="奉贤"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:2px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="金山"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="崇明"  />
+    </div>
+    <div class="img-preview" id="sejie" >
+        <b > &nbsp 色阶算法：</b>
+        <br/>
+        <input type="button" id="dengliang" style="font-family:Microsoft YaHei;margin-top:0px;margin-left:2px;width:80px;font-style-color: #000000;color: #6495ED  ; font-size: 14px"  class="button "   value="等量划分"  />
+        <input type="button" id="jinzita" style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-8px;width:80px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="金字塔划分"  />
+        <input type="button" id="dengzhi" style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-5px;width:80px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="等值划分"  />
+    </div>
+    <div class="img-preview" id="picture" >
+        <div style="cursor:pointer;height:106px;width: 74px;position:absolute;left: 2px; margin-top:0px; background:url(images/raster4Guser.png) no-repeat 0px " onclick="raster4GuserValue()"></div>
+        <div style="cursor:pointer;height:106px;width: 74px;position:absolute;left: 90px; margin-top:0px; background:url(images/raster4Gterminal.png) no-repeat 0px " onclick="raster4GterminalValue()"></div>
+        <div style="cursor:pointer;height:106px;width: 74px;position:absolute;left: 175px; margin-top:0px; background:url(images/raster4Gdata.png) no-repeat 0px " onclick="raster4GdataValue()"></div>
+        <div style="cursor:pointer;height:106px;width: 74px;position:absolute;left: 2px; margin-top:110px; background:url(images/vector4Guser.png) no-repeat 0px " onclick="vector4GuserValue()"></div>
+        <div style="cursor:pointer;height:106px;width: 74px;position:absolute;left: 90px; margin-top:110px; background:url(images/vector4Gterminal.png) no-repeat 0px " onclick="vector4GterminalValue()"></div>
+        <div style="cursor:pointer;height:106px;width: 74px;position:absolute;left: 175px; margin-top:110px; background:url(images/vector4Gdata.png) no-repeat 0px " onclick="vector4GdataValue()"></div>
+    </div>
+    <div class="img-preview" id="statisticsObject" >
+        <b > &nbsp 统计对象：</b>
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:2px;width:80px;font-style-color: #000000;color: #6495ED ; font-size: 14px"  class="button "   value="栅格"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-8px;width:80px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="小区"  />
+    </div>
+    <div class="img-preview" id="statisticsIndex" >
+        <b > &nbsp 统计指标：</b>
+        <br/>
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:2px;width:80px;font-style-color: #000000;color: #6495ED ; font-size: 14px"  class="button "   value="4G用户数"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-10px;width:80px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="4G终端流量"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:0px;width:100px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="4G终端用户数"  />
+        <table>
+            <tr>
+                <td>
+                    <p style="font-size: 12px">  &nbsp &nbsp 范围：</p>
+                </td>
+                <td>
+                    <input type="text" id="downValue" style="font-family:Microsoft YaHei;height:15px;margin-top:0px;margin-left:-5px;font-style-color: #000000;width: 60px;" >
+                </td>
+                <td>
+                    <p style="font-size: 12px">  &nbsp 至</p>
+                </td>
+                <td>
+                    <input type="text" id="upValue" style="font-family:Microsoft YaHei;height:15px;margin-top:0px;margin-left:5px;font-style-color: #000000;width: 60px;" >
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="img-preview" id="topNumber" >
+        <b > &nbsp TopN：</b>
+        <br/>
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:2px;width:50px;font-style-color: #000000;color: #6495ED ; font-size: 14px"  class="button "   value="10"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="50"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="100"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="150"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="200"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="250"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:2px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="300"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px; font-style-color: #000000;color: #000000 ;font-size: 14px"  class="button " value="400"  />
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:0px;margin-left:-12px;width:50px;font-style-color: #000000;color: #000000 ; font-size: 14px"  class="button "   value="500"  />
+        <input id="topN" type="text" style="font-family:Microsoft YaHei;margin-top:5px;height:18px;margin-left:-8px;font-style-color: #000000;width: 100px;"  value="自定义" onfocus="this.value=''" onblur="if(this.value==''){this.value='自定义'}"/>
+    </div>
+    <div class="img-preview" id="searchOk" >
+        <input type="button"  style="font-family:Microsoft YaHei;margin-top:1px;margin-left:90px;width:100px; background-color:#6495ED;font-style-color: #000000;color: #000000 ;font-size: 16px"   value="搜索"  onclick="callServer()"/>
+    </div>
+</div>
+<div id="map"></div>
+<script>
+    //解决跨域请求数据问题
+    jQuery.support.cors = true;
+    jQuery.ajaxSetup({ scriptCharset: "utf-8" , contentType: "application/json; charset=utf-8"});
+    var s = window.location.href;
+    //处理移动外网访问时IP变化问题
+    var baseUrl = "10.221.247.7";
+    if(s.indexOf('10.10.46.60') != -1){
+        baseUrl = '10.10.46.60';
+    }
+    var viewType;
+    var map;
+</script>
+</body>
+</html>
